@@ -4,10 +4,10 @@
    ========================================================================== */
 
 const weddingData = {
-  groomName: "شهاب",
-  groomNameEn: "Shihab",
-  brideName: "ريم",
-  brideNameEn: "Reem",
+  groomName: "زياد",
+  groomNameEn: "ziad",
+  brideName: "اصاله",
+  brideNameEn: "asalah",
   weddingDate: "12-12",          // DD-MM
   weddingYear: "",               // e.g. "2026" — the countdown stays hidden until a valid year is set
   weddingTime: "19:00",          // 24-hour HH:MM
