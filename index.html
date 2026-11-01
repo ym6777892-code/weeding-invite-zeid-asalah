@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>شهاب & ريم — دعوة زفاف</title>
+  <meta name="description" content="يتشرف شهاب وريم بدعوتكم لحضور حفل زفافهما. | Shihab & Reem invite you to celebrate their wedding.">
+  <meta name="theme-color" content="#F8F5F0">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="شهاب & ريم — دعوة زفاف | Shihab & Reem">
+  <meta property="og:description" content="يتشرف شهاب وريم بدعوتكم لحضور حفل زفافهما. | Shihab & Reem invite you to celebrate their wedding.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23F8F5F0'/%3E%3Cpath d='M16 6c4 3 6 7 0 12-6-5-4-9 0-12z' fill='%23C99B9B'/%3E%3C/svg%3E">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Aref+Ruqaa:wght@400;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=IBM+Plex+Sans+Arabic:wght@300;400;500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
+  <noscript><style>.loader,.cover{display:none}body.is-locked{overflow:auto}</style></noscript>
+</head>
+<body class="is-locked">
+
+  <!-- Shared vector symbols -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <symbol id="emblem" viewBox="0 0 100 100">
+      <g fill="none" stroke="currentColor" stroke-linejoin="round">
+        <path d="M50 50C40 34 42 14 50 5C58 14 60 34 50 50Z"/>
+        <path d="M50 50C40 34 42 14 50 5C58 14 60 34 50 50Z" transform="rotate(45 50 50)"/>
+        <path d="M50 50C40 34 42 14 50 5C58 14 60 34 50 50Z" transform="rotate(90 50 50)"/>
+        <path d="M50 50C40 34 42 14 50 5C58 14 60 34 50 50Z" transform="rotate(135 50 50)"/>
+        <path d="M50 50C40 34 42 14 50 5C58 14 60 34 50 50Z" transform="rotate(180 50 50)"/>
+        <path d="M50 50C40 34 42 14 50 5C58 14 60 34 50 50Z" transform="rotate(225 50 50)"/>
+        <path d="M50 50C40 34 42 14 50 5C58 14 60 34 50 50Z" transform="rotate(270 50 50)"/>
+        <path d="M50 50C40 34 42 14 50 5C58 14 60 34 50 50Z" transform="rotate(315 50 50)"/>
+        <circle cx="50" cy="50" r="3"/>
+      </g>
+    </symbol>
+  </svg>
+
+  <!-- Loading screen -->
+  <div class="loader" id="loader" aria-hidden="true">
+    <svg class="emblem loader__mark" width="64" height="64" viewBox="0 0 100 100"><use href="#emblem"/></svg>
+  </div>
+
+  <!-- Falling petals (decorative, never blocks touches) -->
+  <canvas class="petals" id="petals" aria-hidden="true"></canvas>
+
+  <!-- Language switcher -->
+  <div class="lang" id="langSwitch" role="group" aria-label="Language / اللغة">
+    <button type="button" data-lang="ar" lang="ar">العربية</button>
+    <button type="button" data-lang="en" lang="en">English</button>
+  </div>
+
+  <!-- Cover -->
+  <div class="cover" id="cover">
+    <div class="panel panel--l"></div>
+    <div class="panel panel--r"></div>
+    <div class="cover__content">
+      <svg class="emblem emblem--cover" width="84" height="84" viewBox="0 0 100 100" aria-hidden="true"><use href="#emblem"/></svg>
+      <h1 class="cover__names">
+        <span class="n-main nm" id="coverMain"></span>
+        <span class="n-alt nm" id="coverAlt"></span>
+      </h1>
+      <p class="cover__announce" id="coverAnnounce"></p>
+      <p class="cover__date" id="coverDate"></p>
+      <button class="btn btn--solid" id="openBtn" type="button"></button>
+    </div>
+  </div>
+
+  <!-- Invitation -->
+  <main id="invitation" inert tabindex="-1">
+
+    <section class="section hero" id="hero">
+      <p class="eyebrow reveal" data-t="heroEyebrow"></p>
+      <h2 class="names" id="names">
+        <span class="mask"><span class="mask__in nm" id="groom"></span></span>
+        <span class="mask"><span class="mask__in amp" aria-hidden="true">&amp;</span></span>
+        <span class="mask"><span class="mask__in nm" id="bride"></span></span>
+      </h2>
+      <p class="alt-names nm reveal" id="heroAlt" style="--d:.5s"></p>
+      <div class="orn reveal" style="--d:.6s" aria-hidden="true"><i></i><b></b><i></i></div>
+      <p class="lead reveal" id="message" style="--d:.7s"></p>
+      <span class="scroll-cue" aria-hidden="true"></span>
+    </section>
+
+    <section class="section section--dark" id="date">
+      <svg class="bg-emblem" width="460" height="460" viewBox="0 0 100 100" aria-hidden="true"><use href="#emblem"/></svg>
+      <div class="section__inner">
+        <p class="eyebrow reveal" data-t="saveTheDate"></p>
+        <p class="date-main reveal" id="dateMain" style="--d:.1s"></p>
+        <p class="sub reveal" id="dateSub" style="--d:.15s"></p>
+        <div class="orn orn--dark reveal" style="--d:.2s" aria-hidden="true"><i></i><b></b><i></i></div>
+        <p class="time-main reveal" id="timeMain" style="--d:.25s"></p>
+        <p class="sub reveal" id="timeSub" style="--d:.3s"></p>
+        <div class="countdown reveal" id="countdown" style="--d:.35s" role="timer" hidden>
+          <div class="cd-unit"><span class="cd-num" data-unit="days">00</span><span class="cd-label" data-t="days"></span></div>
+          <div class="cd-unit"><span class="cd-num" data-unit="hours">00</span><span class="cd-label" data-t="hours"></span></div>
+          <div class="cd-unit"><span class="cd-num" data-unit="minutes">00</span><span class="cd-label" data-t="minutes"></span></div>
+          <div class="cd-unit"><span class="cd-num" data-unit="seconds">00</span><span class="cd-label" data-t="seconds"></span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--venue" id="venue">
+      <div class="section__inner">
+        <svg class="emblem emblem--sm reveal" width="56" height="56" viewBox="0 0 100 100" aria-hidden="true"><use href="#emblem"/></svg>
+        <p class="eyebrow reveal" data-t="venue" style="--d:.1s"></p>
+        <h2 class="h2 reveal" id="venueName" style="--d:.15s" hidden></h2>
+        <p class="addr reveal" id="venueAddress" style="--d:.2s" hidden></p>
+        <p class="hint reveal" id="venueHint" style="--d:.2s" data-t="hint"></p>
+        <a class="btn reveal" id="directions" style="--d:.3s" target="_blank" rel="noopener noreferrer" hidden></a>
+      </div>
+    </section>
+
+    <footer class="footer" id="footer">
+      <svg class="emblem emblem--sm" width="44" height="44" viewBox="0 0 100 100" aria-hidden="true"><use href="#emblem"/></svg>
+      <p class="footer__love" data-t="love"></p>
+      <p class="footer__names nm" id="footNames"></p>
+      <p class="footer__alt nm" id="footAlt"></p>
+      <p class="footer__date" id="footDate"></p>
+    </footer>
+
+  </main>
+
+  <!-- Music: place MP3.mp3 in the repository root next to this file -->
+  <audio id="backgroundMusic" src="./MP3.mp3" loop preload="none"></audio>
+
+  <button class="music" id="musicBtn" type="button" hidden>
+    <span class="eq" aria-hidden="true"><span></span><span></span><span></span></span>
+    <span class="music__text" id="musicText"></span>
+  </button>
+
+  <script>
+    /* Safety net: if script.js is missing from the repository, never leave a blank screen */
+    setTimeout(function () {
+      if (window.__inviteReady) return;
+      var l = document.getElementById('loader');
+      if (l) l.style.display = 'none';
+      var c = document.getElementById('cover');
+      if (c) c.style.visibility = 'visible';
+    }, 6000);
+  </script>
+  <script src="./script.js"></script>
+</body>
+</html>
