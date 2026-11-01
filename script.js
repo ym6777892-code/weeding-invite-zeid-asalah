@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Shihab & Reem — wedding invitation
+   ziad & Asala — wedding invitation
    1) Edit weddingData below. 2) Everything else works automatically.
    ========================================================================== */
 
@@ -7,7 +7,7 @@ const weddingData = {
   groomName: "زياد",
   groomNameEn: "ziad",
   brideName: "اصاله",
-  brideNameEn: "asalah",
+  brideNameEn: "Asala",
   weddingDate: "12-12",          // DD-MM
   weddingYear: "",               // e.g. "2026" — the countdown stays hidden until a valid year is set
   weddingTime: "19:00",          // 24-hour HH:MM
